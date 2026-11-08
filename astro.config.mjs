@@ -9,6 +9,13 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'My Docs',
+			defaultLocale: 'root',
+			locales: {
+				root: {
+					label: 'Português',
+					lang: 'pt-BR',
+				},
+			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{

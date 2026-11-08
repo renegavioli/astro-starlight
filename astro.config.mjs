@@ -12,12 +12,12 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{
-					label: 'Protocolo Clínico',
-					items: [{ autogenerate: { directory: 'protocolo_clinico'} }],
+					label: 'Protocolos CARDIO',
+					items: [{ autogenerate: { directory: 'protocolos'} }],
 				},
 				{
-					label: 'Linha de Cuidado',
-					items: [{ autogenerate: { directory: 'linha_de_cuidado' } }],
+					label: 'Soluções CARDIO',
+					items: [{ autogenerate: { directory: 'solucoes' } }],
 				},
 			],
 		}),

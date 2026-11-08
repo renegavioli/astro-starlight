@@ -1,7 +1,6 @@
 ---
 title: "Protocolo Linha de Cuidado"
 ---
-# Protocolo Linha de Cuidado CARDIO + Clima
 
 ## A Iniciativa CARDIO
 O CARDIO é um programa de transformação do cuidado cardiovascular no Brasil, idealizado pela Fundação Novartis. Tem como foco o enfrentamento das Condições Crônicas Não Transmissíveis (CCNTs) e o fortalecimento da Atenção Primária à Saúde (APS).

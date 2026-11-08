@@ -1,4 +1,7 @@
-# Protocolo Clínico CARDIO Fortaleza
+---
+title: "Protocolo Clínico"
+---
+# Protocolo Clínico CARDIO
 
 ## Introdução e Atuação da Equipe
 Os protocolos clínicos são guias práticos baseados em evidências para o rastreamento, diagnóstico, tratamento e controle de HA e DM na APS.

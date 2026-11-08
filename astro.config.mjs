@@ -8,7 +8,7 @@ export default defineConfig({
 	base: '/astro-starlight',
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Documentos',
 			defaultLocale: 'root',
 			locales: {
 				root: {

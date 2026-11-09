@@ -3,28 +3,10 @@ media:
   output: /images
 
 content:
-  # 1. GERENCIAMENTO DA SIDEBAR
-  - name: sidebar
-    label: Menu Lateral (Sidebar)
-    type: file
-    path: src/sidebar.json
-    fields:
-      - name: menu
-        label: Grupos de Documentação
-        type: list
-        fields:
-          - name: label
-            label: Nome da Seção (Ex: Protocolos CARDIO)
-            type: string
-          - name: directory
-            label: Nome da Pasta (Ex: protocolos)
-            type: string
-
-  # 2. EDIÇÃO DA PÁGINA PRINCIPAL (Home)
-  - name: homepage
-    label: Página Inicial
-    type: file
-    path: src/content/docs/index.mdx
+  - name: docs
+    label: Páginas e Documentação
+    type: collection
+    path: src/content/docs
     fields:
       - name: title
         label: Título
@@ -33,11 +15,28 @@ content:
       - name: description
         label: Descrição
         type: string
+
+      # FRONTMATTER DA SIDEBAR (Para as páginas de documentação)
+      - name: sidebar
+        label: Configuração da Sidebar (Frontmatter)
+        type: object
+        fields:
+          - name: label
+            label: Nome no Menu
+            type: string
+          - name: order
+            label: Ordem (Ex: 1, 2, 3)
+            type: number
+          - name: hidden
+            label: Ocultar do Menu?
+            type: boolean
+
+      # FRONTMATTER DA HOME (Para o index.mdx)
       - name: template
-        label: Template
+        label: Template (Digite 'splash' para a Home)
         type: string
       - name: hero
-        label: Hero Section
+        label: Hero Section (Apenas Home)
         type: object
         fields:
           - name: tagline
@@ -48,27 +47,9 @@ content:
             type: object
             fields:
               - name: file
-                label: Caminho da Imagem
+                label: Caminho do Arquivo
                 type: string
+
       - name: body
         label: Corpo do Texto
-        type: rich-text
-
-  # 3. EDIÇÃO DAS PÁGINAS DE DOCUMENTAÇÃO
-  - name: docs
-    label: Documentação
-    type: collection
-    path: src/content/docs
-    exclude:
-      - index.mdx
-    fields:
-      - name: title
-        label: Título da Página
-        type: string
-        required: true
-      - name: description
-        label: Descrição
-        type: string
-      - name: body
-        label: Conteúdo
         type: rich-text

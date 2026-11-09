@@ -1,12 +1,5 @@
 {
   "menu": [
-    {
-      "label": "Protocolos CARDIO",
-      "directory": "protocolos"
-    },
-    {
-      "label": "Soluções CARDIO",
-      "directory": "solucoes"
-    }
-  ]
+				{ autogenerate: { directory: '' } }
+			]
 }

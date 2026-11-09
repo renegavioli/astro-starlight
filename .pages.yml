@@ -3,11 +3,9 @@ media:
   public: /images
 
 content:
-  # 1. Configuração para editar a página inicial (index.mdx) de forma isolada
   - name: home
     label: Página Inicial
-    type: file
-    path: src/content/docs/index.mdx
+    file: src/content/docs/index.mdx
     fields:
       - name: title
         label: Título da Página
@@ -19,14 +17,9 @@ content:
         label: Conteúdo Principal
         type: rich-text
 
-  # 2. Configuração para as demais páginas Markdown/MDX
   - name: docs
     label: Páginas de Conteúdo
-    type: folder
-    path: src/content/docs
-    # Impede que a página inicial apareça na lista geral de documentos
-    exclude: 
-      - index.mdx
+    folder: src/content/docs
     fields:
       - name: title
         label: Título da Página
@@ -35,32 +28,22 @@ content:
       - name: description
         label: Descrição
         type: string
-      
-      # Objeto 'sidebar' mapeado para o frontmatter do Astro Starlight
       - name: sidebar
         label: Comportamento no Menu (Sidebar)
         type: object
         fields:
           - name: label
             label: Texto no Menu (Label)
-            description: Substitui o título do documento na barra lateral.
             type: string
-          
           - name: order
             label: Posição (Order)
-            description: Ordem de exibição (ex: 1, 2, 3).
             type: number
-            
           - name: hidden
             label: Ocultar do Menu (Hide)
-            description: Se verdadeiro, a página não aparecerá no menu de navegação.
             type: boolean
-            
           - name: badge
             label: Etiqueta (Badge)
-            description: Texto de destaque ao lado do link (ex. "Novo", "Beta", "Atualizado").
             type: string
-
       - name: body
         label: Conteúdo da Página
         type: rich-text

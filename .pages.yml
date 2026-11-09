@@ -1,3 +1,7 @@
+media:
+  input: public
+  output: /
+
 content:
   - name: home
     label: Página Inicial
@@ -5,55 +9,91 @@ content:
     path: src/content/docs/index.mdx
     fields:
       - name: title
-        label: Título da Página
+        label: Título
         type: string
       - name: description
         label: Descrição
         type: string
-      
-      # --- MAPEAMENTO DO COMPONENTE HERO ---
       - name: hero
-        label: Bloco Hero (Destaque Principal)
+        label: Hero (Destaque)
         type: object
         fields:
           - name: tagline
-            label: Subtítulo (Tagline)
+            label: Tagline
             type: string
-            
           - name: image
-            label: Imagem em Destaque
+            label: Imagem
             type: object
             fields:
               - name: file
                 label: Arquivo de Imagem
                 type: image
               - name: alt
-                label: Texto Alternativo (Acessibilidade)
+                label: Texto Alternativo
                 type: string
-                
           - name: actions
-            label: Botões de Ação
+            label: Botões (Actions)
             type: object
-            list: true # Isso transforma o objeto em um array (lista) de botões
+            list: true
             fields:
               - name: text
                 label: Texto do Botão
                 type: string
               - name: link
-                label: Link de Destino
+                label: Link
+                type: string
+              - name: icon
+                label: Ícone
                 type: string
               - name: variant
-                label: Estilo do Botão
-                type: select
-                options:
-                  - primary
-                  - secondary
-                  - minimal
-              - name: icon
-                label: Ícone (Ex: right-arrow, external)
+                label: Variante (primary / secondary)
                 type: string
-      # -------------------------------------
-      
+      - name: cards
+        label: Cards de Funcionalidades
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Título do Card
+            type: string
+          - name: icon
+            label: Ícone
+            type: string
+          - name: description
+            label: Descrição do Card
+            type: string
       - name: body
-        label: Conteúdo Principal
+        label: Conteúdo Adicional
+        type: rich-text
+
+  - name: docs
+    label: Páginas de Conteúdo
+    type: collection
+    path: src/content/docs
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descrição
+        type: string
+      - name: sidebar
+        label: Configuração da Sidebar
+        type: object
+        fields:
+          - name: label
+            label: Texto no Menu (Label)
+            type: string
+          - name: order
+            label: Ordem (Order)
+            type: number
+          - name: hidden
+            label: Ocultar (Hide)
+            type: boolean
+          - name: badge
+            label: Etiqueta (Badge)
+            type: string
+      - name: body
+        label: Conteúdo
         type: rich-text

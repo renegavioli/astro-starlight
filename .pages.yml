@@ -1,11 +1,8 @@
-media:
-  folder: public/images
-  public: /images
-
 content:
   - name: home
     label: Página Inicial
-    file: src/content/docs/index.mdx
+    type: file
+    path: src/content/docs/index.mdx
     fields:
       - name: title
         label: Título da Página
@@ -13,37 +10,50 @@ content:
       - name: description
         label: Descrição
         type: string
-      - name: body
-        label: Conteúdo Principal
-        type: rich-text
-
-  - name: docs
-    label: Páginas de Conteúdo
-    folder: src/content/docs
-    fields:
-      - name: title
-        label: Título da Página
-        type: string
-        required: true
-      - name: description
-        label: Descrição
-        type: string
-      - name: sidebar
-        label: Comportamento no Menu (Sidebar)
+      
+      # --- MAPEAMENTO DO COMPONENTE HERO ---
+      - name: hero
+        label: Bloco Hero (Destaque Principal)
         type: object
         fields:
-          - name: label
-            label: Texto no Menu (Label)
+          - name: tagline
+            label: Subtítulo (Tagline)
             type: string
-          - name: order
-            label: Posição (Order)
-            type: number
-          - name: hidden
-            label: Ocultar do Menu (Hide)
-            type: boolean
-          - name: badge
-            label: Etiqueta (Badge)
-            type: string
+            
+          - name: image
+            label: Imagem em Destaque
+            type: object
+            fields:
+              - name: file
+                label: Arquivo de Imagem
+                type: image
+              - name: alt
+                label: Texto Alternativo (Acessibilidade)
+                type: string
+                
+          - name: actions
+            label: Botões de Ação
+            type: object
+            list: true # Isso transforma o objeto em um array (lista) de botões
+            fields:
+              - name: text
+                label: Texto do Botão
+                type: string
+              - name: link
+                label: Link de Destino
+                type: string
+              - name: variant
+                label: Estilo do Botão
+                type: select
+                options:
+                  - primary
+                  - secondary
+                  - minimal
+              - name: icon
+                label: Ícone (Ex: right-arrow, external)
+                type: string
+      # -------------------------------------
+      
       - name: body
-        label: Conteúdo da Página
+        label: Conteúdo Principal
         type: rich-text

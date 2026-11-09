@@ -1,22 +1,28 @@
 media:
-  input: public/images 
-  output: /images 
+  input: public/images
+  output: /images
 
 content:
-  # 1. ARQUIVO DE CONFIGURAÇÃO (Editado como código bruto)
-  - name: config
-    label: Configurações do Astro
+  # 1. GERENCIAMENTO DA SIDEBAR
+  - name: sidebar
+    label: Menu Lateral (Sidebar)
     type: file
-    path: astro.config.mjs
+    path: src/sidebar.json
     fields:
-      # O campo 'body' captura todo o conteúdo do arquivo
-      - name: body
-        label: Código do astro.config.mjs
-        type: code
+      - name: menu
+        label: Grupos de Documentação
+        type: list
+        fields:
+          - name: label
+            label: Nome da Seção (Ex: Protocolos CARDIO)
+            type: string
+          - name: directory
+            label: Nome da Pasta (Ex: protocolos)
+            type: string
 
-  # 2. PÁGINA PRINCIPAL (index.mdx)
+  # 2. EDIÇÃO DA PÁGINA PRINCIPAL (Home)
   - name: homepage
-    label: Página Principal (Home)
+    label: Página Inicial
     type: file
     path: src/content/docs/index.mdx
     fields:
@@ -28,42 +34,41 @@ content:
         label: Descrição
         type: string
       - name: template
-        label: Template (Layout)
+        label: Template
         type: string
       - name: hero
         label: Hero Section
         type: object
         fields:
           - name: tagline
-            label: Slogan (Tagline)
+            label: Slogan
             type: string
           - name: image
-            label: Imagem do Hero
+            label: Imagem
             type: object
             fields:
               - name: file
-                label: Caminho do Arquivo
+                label: Caminho da Imagem
                 type: string
       - name: body
         label: Corpo do Texto
         type: rich-text
 
-  # 3. RESTANTE DA DOCUMENTAÇÃO
+  # 3. EDIÇÃO DAS PÁGINAS DE DOCUMENTAÇÃO
   - name: docs
-    label: Documentação Starlight
+    label: Documentação
     type: collection
     path: src/content/docs
-    # Ignora o index.mdx aqui para evitar duplicação com a seção acima
     exclude:
       - index.mdx
     fields:
       - name: title
-        label: Título
+        label: Título da Página
         type: string
         required: true
       - name: description
         label: Descrição
         type: string
       - name: body
-        label: Corpo do Texto
+        label: Conteúdo
         type: rich-text

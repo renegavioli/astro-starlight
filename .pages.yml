@@ -1,14 +1,61 @@
 media:
-  # O Astro serve arquivos da pasta public na raiz do site
   input: public/images 
-  # Caminho gerado no arquivo Markdown
   output: /images 
 
 content:
+  # 1. ARQUIVO DE CONFIGURAÇÕES ÚNICO
+  - name: config
+    label: Configurações do Site
+    type: file
+    # Substitua pelo caminho real do seu arquivo JSON ou YAML de configurações
+    path: src/data/config.json 
+    fields:
+      - name: title
+        label: Nome do Site
+        type: string
+      - name: description
+        label: Descrição Global
+        type: string
+
+  # 2. PÁGINA PRINCIPAL (index.mdx)
+  - name: homepage
+    label: Página Principal
+    type: file
+    path: src/content/docs/index.mdx
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descrição
+        type: string
+      - name: template
+        label: Template (Layout)
+        type: string
+      # Mapeamento do objeto 'hero' padrão da home do Starlight
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - name: tagline
+            label: Slogan (Tagline)
+            type: string
+          - name: image
+            label: Imagem do Hero
+            type: object
+            fields:
+              - name: file
+                label: Caminho do Arquivo
+                type: string
+      - name: body
+        label: Corpo do Texto
+        type: rich-text
+
+  # 3. RESTANTE DA DOCUMENTAÇÃO
   - name: docs
     label: Documentação Starlight
     type: collection
-    # Caminho obrigatório onde o Starlight lê as páginas de documentação
     path: src/content/docs
     fields:
       - name: title

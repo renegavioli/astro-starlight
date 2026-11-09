@@ -1,0 +1,23 @@
+media:
+  # O Astro serve arquivos da pasta public na raiz do site
+  input: public/images 
+  # Caminho gerado no arquivo Markdown
+  output: /images 
+
+content:
+  - name: docs
+    label: Documentação Starlight
+    type: collection
+    # Caminho obrigatório onde o Starlight lê as páginas de documentação
+    path: src/content/docs
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descrição
+        type: string
+      - name: body
+        label: Corpo do Texto
+        type: rich-text

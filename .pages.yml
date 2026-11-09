@@ -3,23 +3,20 @@ media:
   output: /images 
 
 content:
-  # 1. ARQUIVO DE CONFIGURAÇÕES ÚNICO
+  # 1. ARQUIVO DE CONFIGURAÇÃO (Editado como código bruto)
   - name: config
-    label: Configurações do Site
+    label: Configurações do Astro
     type: file
-    # Substitua pelo caminho real do seu arquivo JSON ou YAML de configurações
-    path: src/data/config.json 
+    path: astro.config.mjs
     fields:
-      - name: title
-        label: Nome do Site
-        type: string
-      - name: description
-        label: Descrição Global
-        type: string
+      # O campo 'body' captura todo o conteúdo do arquivo
+      - name: body
+        label: Código do astro.config.mjs
+        type: code
 
   # 2. PÁGINA PRINCIPAL (index.mdx)
   - name: homepage
-    label: Página Principal
+    label: Página Principal (Home)
     type: file
     path: src/content/docs/index.mdx
     fields:
@@ -33,7 +30,6 @@ content:
       - name: template
         label: Template (Layout)
         type: string
-      # Mapeamento do objeto 'hero' padrão da home do Starlight
       - name: hero
         label: Hero Section
         type: object
@@ -57,6 +53,9 @@ content:
     label: Documentação Starlight
     type: collection
     path: src/content/docs
+    # Ignora o index.mdx aqui para evitar duplicação com a seção acima
+    exclude:
+      - index.mdx
     fields:
       - name: title
         label: Título

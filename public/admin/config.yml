@@ -5,48 +5,36 @@ backend:
   repo: renegavioli/astro-starlight
   branch: main # Mude para master se for o caso no seu repositório
 
-# Os caminhos de repositório não devem ter a barra inicial (/)
-media_folder: public/media
-public_folder: /media
-
+media_folder: public/images
+public_folder: /images
+output:
+  omit_empty_optional_fields: true
 collections:
   - name: docs
     label: Docs
-    label_singular: Doc
+    label_singular: Page
     folder: src/content/docs
     create: true
-    slug: "{{slug}}"
-    format: frontmatter
-    extension: md # Starlight utiliza muito MDX. Pode alterar para md se preferir
+    nested:
+      subfolders: false
+    meta: { path: {} }
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Description, name: description, widget: text, required: false }
-      
-      # -- FRONTMATTER DA SIDEBAR --
-      - label: Sidebar
-        name: sidebar
+      - { name: title, label: Title }
+      - { name: description, label: Description, required: false }
+      - name: sidebar
+        label: Sidebar
         widget: object
         required: false
+        collapsed: true
         fields:
-          - { label: Label, name: label, widget: string, required: false }
-          - { label: Order, name: order, widget: number, value_type: int, required: false }
-          - { label: Hidden, name: hidden, widget: boolean, required: false }
-
-      # -- FRONTMATTER DA HOME --
-      - { label: Template, name: template, widget: string, required: false, hint: "Digite 'splash' para a Home" }
-      - label: Hero
-        name: hero
-        widget: object
-        required: false
-        fields:
-          - { label: Tagline, name: tagline, widget: string, required: false }
-          - label: Image
-            name: image
-            widget: object
-            required: false
-            fields:
-              - { label: File, name: file, widget: string, required: false }
-              
-      # -- CONTEÚDO PRINCIPAL --
-      # Sveltia/Decap usam 'markdown' como o widget padrão para o corpo do texto
-      - { label: Body, name: body, widget: markdown }
+          - { name: label, label: Label, required: false }
+          - { name: order, label: Order, widget: number, required: false }
+          - { name: hidden, label: Hidden, widget: boolean, required: false }
+          - { name: badge, label: Badge, required: false }
+      - name: template
+        label: Template
+        widget: select
+        options: [doc, splash]
+        default: doc
+      - { name: draft, label: Draft, widget: boolean, required: false }
+      - { name: body, label: Body, widget: markdown }

@@ -1,27 +1,15 @@
 ---
 title: Repositório CARDIO
-template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
   tagline: Aqui você encontra toda documentação para aplicar o CARDIO no seu território
   image:
     file: ../../assets/houston.webp
   actions:
     - text: Acesse o nosso protocolo!
-      link: ./protocolo_clinico/
+      link: ./protocolos/protocolo_clinico/
       icon: right-arrow
 ---
-
 import { LinkCard, Card, CardGrid } from '@astrojs/starlight/components';
 
 ## Escolha o que você deseja acessar
 
-<CardGrid stagger>
-	<LinkCard
-		title="Protocolo Clínico"
-		href="./protocolos/protocolo_clinico/"
-	/>
-	<LinkCard
-		title="Protocolo de Linha de Cuidado"
-		href="./protocolos/protocolo_linha_de_cuidado/"
-	/>
-</CardGrid>

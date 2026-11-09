@@ -1,5 +1,12 @@
 {
   "menu": [
-				{ autogenerate: { directory: "" } }
-			]
+    {
+      "label": "Protocolos CARDIO",
+      "directory": "protocolos"
+    },
+    {
+      "label": "Soluções CARDIO",
+      "directory": "solucoes"
+    }
+  ]
 }
